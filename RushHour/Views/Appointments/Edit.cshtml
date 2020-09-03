@@ -1,0 +1,59 @@
+﻿
+@model RushHour.ViewModels.AppointmentViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<div>
+    @Html.AntiForgeryToken()
+    @using (Html.BeginForm("Edit", "Appointments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDateTime, new { htmlAttributes = new { @class = "form-control", @id = "datetimepicker1" } })
+                @Html.ValidationMessageFor(model => model.StartDateTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndDateTime, new { htmlAttributes = new { @class = "form-control", @id = "datetimepicker2" } })
+                @Html.ValidationMessageFor(model => model.EndDateTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <a href="../Index" class="btn btn-info">&#9668; Back to List</a>
+                <input type="submit" value="Edit" class="btn btn-success" />
+            </div>
+        </div>
+    }
+</div>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+

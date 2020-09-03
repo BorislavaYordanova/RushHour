@@ -1,0 +1,50 @@
+﻿@model RushHour.ViewModels.AppointmentViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<div>
+    @Html.AntiForgeryToken()
+    @using (Html.BeginForm("Create", "Appointments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDateTime, new { htmlAttributes = new { @class = "form-control", @id = "datetimepicker1" } })
+                @Html.ValidationMessageFor(model => model.StartDateTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndDateTime, new { htmlAttributes = new { @class = "form-control", @id = "datetimepicker2" } })
+                @Html.ValidationMessageFor(model => model.EndDateTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group" style="margin-left:15px">
+            @Html.LabelFor(model => model.ActivitiesSelectList)
+        </div>
+        foreach (var item in Model.ActivitiesSelectList)
+        {
+            <div style="margin-left:15px; margin-bottom:5px">
+                <input type="checkbox" name="selectedActivities" id="selectedActivities" value="@item.Value" />
+                <label class="custom-control custom-checkbox" for="@item.Text">@item.Text</label>
+            </div>
+        }
+        <div class="form-group">
+            <div>
+                <a href="../Index" class="btn btn-info">&#9668; Back to List</a>
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    }
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

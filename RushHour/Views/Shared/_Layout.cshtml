@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Rush Hour Application </title>  
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+                @Html.ActionLink("Rush Hour Application", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @if (RushHour.Utility.LoginUserSession.IsStateAdmin)
+                    {
+                        @Html.ActionLink("Users", "Index", "Users", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Activities", "Index", "Activities", new { area = "" }, new { @class = "navbar-brand" })     
+                    }
+                @Html.ActionLink("Appointments", "Index", "Appointments", new { area = "" }, new { @class = "navbar-brand" }) 
+        </div>
+    </div>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <div>
+            <footer>
+                <p style="text-align:right">&copy; @DateTime.Now.Year - Rush Hour Application</p>
+            </footer>
+        </div>
+    </div>
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                minDate: moment()
+            })
+        })
+    </script>
+    <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker2').datetimepicker({
+                    minDate: moment()
+                })
+            })
+    </script>
+</body>
+</html>

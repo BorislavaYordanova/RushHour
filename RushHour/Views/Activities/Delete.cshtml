@@ -1,0 +1,30 @@
+﻿@model RushHour.ViewModels.ActivityViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Delete Activity</h1>
+<h3 style="color:brown">Are you sure you want to delete this?</h3>
+
+<div>
+    @using (Html.BeginForm("Delete", "Activities", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <p>@Html.DisplayFor(x => Model.Id)</p>
+
+        <div class="form-group">
+            <div>
+                <a href="../Index" class="btn btn-info">&#9668; Back to List</a>
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </div>
+        </div>
+
+    }
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

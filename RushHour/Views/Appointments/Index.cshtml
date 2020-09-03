@@ -1,0 +1,65 @@
+﻿
+@model List<RushHour.ViewModels.AppointmentViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>List of Appointments</h1>
+
+<table class="table table-hover">
+@foreach (var item in Model)
+{
+    <thead>
+        <tr class="success">
+            <td>
+                @Html.LabelFor(x => item.Id)
+            </td>
+            <td>
+                @Html.LabelFor(x => item.UserId)
+            </td>
+            <td>
+                @Html.LabelFor(x => item.StartDateTime)
+            </td>
+            <td>
+                @Html.LabelFor(x => item.EndDateTime)
+            </td>
+            <td>
+                <div>
+                    <div>
+                        <a href="../Appointments/Create" class="btn btn-success">Create New</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </thead>
+    break;
+}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(x => item.Id)
+            </td>
+  
+            <td>
+                @Html.DisplayFor(x => item.UserId)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(x => item.StartDateTime)
+            </td>
+         
+            <td>
+                @Html.DisplayFor(x => item.EndDateTime)
+
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+
